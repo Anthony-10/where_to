@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:where_to/nav_bar/nav_bar.dart';
-
-import 'landing_page/landing_page.dart';
+import 'package:where_to/about_page/about_page.dart';
+import 'contactUs_page/contactUs_page.dart';
+import 'home_page/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,56 +12,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: MainPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [
-                    Color.fromRGBO(195, 20, 50, 1.0),
-                    Color.fromRGBO(36, 11, 54, 1.0)
-                  ])),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    NavBar(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20.0, horizontal: 40.0),
-                      child: LandingPage(),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              height: 500,
-              color: Colors.pink,
-            )
-          ],
+          children: [HomePage(), AboutPage(), ContactUsPage()],
         ),
       ),
     );

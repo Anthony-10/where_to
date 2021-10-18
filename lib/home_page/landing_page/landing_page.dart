@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
 class LandingPage extends StatelessWidget {
-  List<Widget> pageChildren(double width) {
+  List<Widget> pageChildren() {
     return <Widget>[
       Container(
-        width: width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -25,10 +24,9 @@ class LandingPage extends StatelessWidget {
           ],
         ),
       ),
-      Image.asset(
+      /*Image.asset(
         'assets/photo-1.jpg',
-        width: width,
-      )
+      )*/
     ];
   }
 
@@ -38,9 +36,9 @@ class LandingPage extends StatelessWidget {
       if (constraints.maxWidth > 800) {
         return Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: pageChildren(constraints.biggest.width / 2));
+            children: pageChildren());
       } else {
-        return Column(children: pageChildren(constraints.biggest.width));
+        return Column(children: pageChildren());
       }
     });
   }
