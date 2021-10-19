@@ -13,15 +13,14 @@ class _AboutPageState extends State<AboutPage> {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(color: Colors.white
-          /*gradient: LinearGradient(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
               colors: [
             Color.fromRGBO(12, 6, 45, 1.0),
             Color.fromRGBO(23, 8, 33, 1.0)
-          ])*/
-          ),
+          ])),
       child: Column(
         children: [
           Padding(
@@ -38,7 +37,7 @@ class _AboutPageState extends State<AboutPage> {
             height: MediaQuery.of(context).size.height * 0.8,
             width: MediaQuery.of(context).size.width * 0.9,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10), color: Colors.grey
+                borderRadius: BorderRadius.circular(10), color: Colors.white
                 /*gradient: LinearGradient(
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,

@@ -14,12 +14,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.8,
+      height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
           image: DecorationImage(
         fit: BoxFit.fill,
         image: AssetImage(
-          'assets/photo-1.jpg',
+          'assets/party.jpg',
         ),
       )),
       child: Column(

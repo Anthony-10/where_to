@@ -35,39 +35,45 @@ class DesktopNavbar extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 30),
             ),
-            Row(
-              children: [
-                Text(
-                  'Home',
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  'About',
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(
-                  'Contact Us',
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
-                MaterialButton(
-                    color: Colors.pink,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
-                    child: Text(
-                      'Get Started',
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    onPressed: () {})
-              ],
+            IntrinsicHeight(
+              child: Row(
+                children: [
+                  Text(
+                    'Home',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    'About',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Text(
+                    'Contact Us',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 50,
+                  ),
+                  Text(
+                    'Register',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  VerticalDivider(
+                    color: Colors.white,
+                    thickness: 1,
+                    width: 20,
+                  ),
+                  Text(
+                    'Login',
+                    style: TextStyle(color: Colors.white),
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -100,23 +106,29 @@ class MobileNavBar extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Home',
-                    style: TextStyle(color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      'Home',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   SizedBox(
                     width: 30,
                   ),
-                  Text(
-                    'About',
-                    style: TextStyle(color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      'About',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                   SizedBox(
                     width: 30,
                   ),
-                  Text(
-                    'Contact Us',
-                    style: TextStyle(color: Colors.white),
+                  GestureDetector(
+                    child: Text(
+                      'Contact Us',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
                 ],
               ),
