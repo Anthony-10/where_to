@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({Key? key}) : super(key: key);
+class NavBarMobile extends StatelessWidget {
+  const NavBarMobile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      if (constraints.maxWidth > 1200) {
-        return DesktopNavbar();
-      } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
-        return DesktopNavbar();
-      } else {
-        return MobileNavBar();
-      }
-    });
+    return Container(
+      constraints: BoxConstraints(maxWidth: 1200),
+      child: Text(
+        'Where To',
+        style: TextStyle(
+            fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
+      ),
+    );
   }
 }
 
+/*
 class DesktopNavbar extends StatelessWidget {
   const DesktopNavbar({Key? key}) : super(key: key);
 
@@ -139,3 +139,4 @@ class MobileNavBar extends StatelessWidget {
     );
   }
 }
+*/

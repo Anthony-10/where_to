@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ContactUsPage extends StatefulWidget {
-  const ContactUsPage({Key? key}) : super(key: key);
+class ContactUsPageMobile extends StatefulWidget {
+  const ContactUsPageMobile({Key? key}) : super(key: key);
 
   @override
-  _ContactUsPageState createState() => _ContactUsPageState();
+  _ContactUsPageMobileState createState() => _ContactUsPageMobileState();
 }
 
-class _ContactUsPageState extends State<ContactUsPage> {
+class _ContactUsPageMobileState extends State<ContactUsPageMobile> {
   @override
   Widget build(BuildContext context) {
     return Container(

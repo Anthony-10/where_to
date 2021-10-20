@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:where_to/about_page/about_page.dart';
-import 'contactUs_page/contactUs_page.dart';
-import 'home_page/home_page.dart';
+import 'desktop_navbar/desktop_navbar.dart';
+import 'mobile_navbar/mobile_navbar.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,12 +24,14 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [HomePage(), AboutPage(), ContactUsPage()],
-        ),
-      ),
-    );
+    return LayoutBuilder(builder: (context, constraints) {
+      if (constraints.maxWidth > 1200) {
+        return DesktopNavbar();
+      } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
+        return DesktopNavbar();
+      } else {
+        return MobileNavBar();
+      }
+    });
   }
 }

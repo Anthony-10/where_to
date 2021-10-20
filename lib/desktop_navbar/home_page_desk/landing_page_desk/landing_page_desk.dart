@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LandingPage extends StatelessWidget {
+class LandingPageDesk extends StatelessWidget {
   List<Widget> pageChildren() {
     return <Widget>[
       Padding(
-        padding: const EdgeInsets.only(top: 50.0),
+        padding: const EdgeInsets.only(top: 150.0),
         child: Container(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            //crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Events Highlight',
@@ -45,14 +44,17 @@ class LandingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.start, children: pageChildren());
+
+    /*LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 800) {
         return Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: pageChildren());
       } else {
         return Column(children: pageChildren());
       }
-    });
+    });*/
   }
 }
