@@ -14,6 +14,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
+          Align(
+              alignment: Alignment.topLeft,
+              child:
+                  IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back))),
           // header
           UserAccountsDrawerHeader(
             accountName: const Text('anthony'),

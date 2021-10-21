@@ -1,26 +1,39 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
+import '../../../stated.dart';
+
 class LandingPageDesk extends StatelessWidget {
-  List<Widget> pageChildren() {
-    return <Widget>[
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.start, children: [
       Padding(
         padding: const EdgeInsets.only(top: 150.0),
         child: Container(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Events Highlight',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 40.0,
-                    color: Colors.white),
+              AnimatedTextKit(
+                isRepeatingAnimation: false,
+                animatedTexts: [
+                  TypewriterAnimatedText('Events Highlight',
+                      textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40.0,
+                          color: Colors.white),
+                      speed: Duration(milliseconds: 60)),
+                ],
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Text(
-                  'With you all the way',
-                  style: TextStyle(fontSize: 16.0, color: Colors.white),
+                child: AnimatedTextKit(
+                  isRepeatingAnimation: false,
+                  animatedTexts: [
+                    TypewriterAnimatedText('With you all the way',
+                        textStyle:
+                            TextStyle(fontSize: 16.0, color: Colors.white),
+                        speed: Duration(milliseconds: 80)),
+                  ],
                 ),
               ),
               MaterialButton(
@@ -31,21 +44,17 @@ class LandingPageDesk extends StatelessWidget {
                     'Get Started',
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventPage()),
+                    );
+                  }),
             ],
           ),
         ),
       ),
-      /*Image.asset(
-        'assets/photo-1.jpg',
-      )*/
-    ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.start, children: pageChildren());
+    ]);
 
     /*LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 800) {

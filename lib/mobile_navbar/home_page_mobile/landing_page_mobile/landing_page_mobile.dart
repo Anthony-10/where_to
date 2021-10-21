@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../stated.dart';
+
 class LandingPageMobile extends StatelessWidget {
-  List<Widget> pageChildren() {
-    return <Widget>[
+  @override
+  Widget build(BuildContext context) {
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Padding(
         padding: const EdgeInsets.only(top: 120.0),
         child: Container(
@@ -31,21 +34,17 @@ class LandingPageMobile extends StatelessWidget {
                     'Get Started',
                     style: TextStyle(color: Colors.white),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => EventPage()),
+                    );
+                  }),
             ],
           ),
         ),
       ),
-      /*Image.asset(
-        'assets/photo-1.jpg',
-      )*/
-    ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.center, children: pageChildren());
+    ]);
 
     /*LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 800) {

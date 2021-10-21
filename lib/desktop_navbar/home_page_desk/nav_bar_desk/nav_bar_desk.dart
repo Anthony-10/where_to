@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../stated.dart';
+
 class NavBarDesk extends StatelessWidget {
   const NavBarDesk({Key? key}) : super(key: key);
 
@@ -54,7 +56,7 @@ class NavBarDesk extends StatelessWidget {
                   Text(
                     'Login',
                     style: TextStyle(color: Colors.white),
-                  )
+                  ),
                 ],
               ),
             )
