@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../stated.dart';
+import '../../../../desk_event_page.dart';
 
 class LandingPageMobile extends StatelessWidget {
   @override
@@ -37,7 +37,7 @@ class LandingPageMobile extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => EventPage()),
+                      MaterialPageRoute(builder: (context) => DeskEventPage()),
                     );
                   }),
             ],

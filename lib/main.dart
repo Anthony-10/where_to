@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'desktop_navbar/desktop_navbar.dart';
-import 'mobile_navbar/mobile_navbar.dart';
+import 'desk_event_page.dart';
+import 'moble_event_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,11 +26,11 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       if (constraints.maxWidth > 1200) {
-        return DesktopNavbar();
+        return DeskEventPage();
       } else if (constraints.maxWidth > 800 && constraints.maxWidth < 1200) {
-        return DesktopNavbar();
+        return DeskEventPage();
       } else {
-        return MobileNavBar();
+        return MobileEventPage();
       }
     });
   }

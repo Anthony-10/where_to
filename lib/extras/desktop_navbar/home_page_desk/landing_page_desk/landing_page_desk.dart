@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../../stated.dart';
+import '../../../../desk_event_page.dart';
 
 class LandingPageDesk extends StatelessWidget {
   @override
@@ -47,7 +47,7 @@ class LandingPageDesk extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => EventPage()),
+                      MaterialPageRoute(builder: (context) => DeskEventPage()),
                     );
                   }),
             ],

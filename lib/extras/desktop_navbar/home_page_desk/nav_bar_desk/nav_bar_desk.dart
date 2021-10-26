@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../stated.dart';
-
 class NavBarDesk extends StatelessWidget {
   const NavBarDesk({Key? key}) : super(key: key);
 

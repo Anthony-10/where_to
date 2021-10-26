@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:where_to/mobile_navbar/about_page_mobile/about_page_mobile.dart';
-import 'package:where_to/mobile_navbar/contactUs_page_mobile/contactUs_page_mobile.dart';
-import 'package:where_to/mobile_navbar/home_page_mobile/home_page_mobile.dart';
-
+import 'about_page_mobile/about_page_mobile.dart';
+import 'contactUs_page_mobile/contactUs_page_mobile.dart';
 import 'drawer/drawer.dart';
+import 'home_page_mobile/home_page_mobile.dart';
 
 class MobileNavBar extends StatefulWidget {
   const MobileNavBar({Key? key}) : super(key: key);

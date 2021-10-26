@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:where_to/desktop_navbar/about_page_desk/about_page_desk.dart';
-import 'package:where_to/desktop_navbar/contactUs_page_desk/contactUs_page_desk.dart';
 
+import 'about_page_desk/about_page_desk.dart';
+import 'contactUs_page_desk/contactUs_page_desk.dart';
 import 'home_page_desk/home_page_desk.dart';
 
 class DesktopNavbar extends StatefulWidget {
