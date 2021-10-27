@@ -1,7 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:sprung/sprung.dart';
-import 'package:where_to/extras/mobile_navbar/contactUs_page_mobile/contactUs_page_mobile.dart';
+
+import 'controller.dart';
 
 class DeskEventPage extends StatefulWidget {
   const DeskEventPage({Key? key}) : super(key: key);
@@ -16,30 +19,12 @@ class _DeskEventPageState extends State<DeskEventPage> {
   bool isHovered3 = false;
 
   final texts = ['Home', 'Events', 'ContactUs'];
-  final items1 = [
-    'Item1',
-    'Item12',
-    'Item13',
-    'Item14',
-    'Item15',
-  ];
-  final items2 = [
-    'Item2',
-    'Item22',
-    'Item23',
-    'Item24',
-    'Item25',
-  ];
-  final items3 = [
-    'Item3',
-    'Item32',
-    'Item33',
-    'Item24',
-    'Item35',
-  ];
 
-  String? value;
+  String? value1;
+  String? value2;
+  String? value3;
 
+  final eventController = Get.put(EventController());
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -238,20 +223,24 @@ class _DeskEventPageState extends State<DeskEventPage> {
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
                               maxCrossAxisExtent: 300,
-                              childAspectRatio: 8 / 10,
+                              childAspectRatio: 8 / 12,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20),
                       itemCount: 20,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           width: 800,
-                          height: 500,
+                          height: 400,
                           child: Column(
                             children: [
                               Container(
                                 color: Colors.black,
-                                height: 200,
+                                height: 300,
                                 width: 400,
+                                child: Image.asset(
+                                  'assets/event1.jpg',
+                                  fit: BoxFit.fill,
+                                ),
                               ),
                               Container(
                                 color: Colors.white,
@@ -301,52 +290,67 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                   Container(
                                     child: DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
+                                        items: eventController.events
+                                            .map(eventController.buildMenuItem)
+                                            .toList(),
                                         borderRadius: BorderRadius.circular(12),
+                                        value: value1,
                                         onChanged: (value) => setState(() {
-                                          this.value = value;
+                                          print(this.value1);
+                                          this.value1 = value;
+                                          print(this.value1);
                                         }),
-                                        value: value,
                                         icon: Icon(Icons.arrow_drop_down,
                                             color: Colors.black),
                                         iconSize: 25,
-                                        items:
-                                            items1.map(buildMenuItem).toList(),
-                                        hint: Text('Select Event'),
+                                        hint: Text('Select Event',
+                                            style:
+                                                TextStyle(color: Colors.black)),
                                       ),
                                     ),
                                   ),
-                                  VerticalDivider(),
+                                  VerticalDivider(
+                                    color: Colors.black,
+                                  ),
                                   Container(
                                     child: DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
-                                        value: value,
+                                        value: value2,
                                         onChanged: (value) => setState(() {
-                                          this.value = value;
+                                          this.value2 = value;
                                         }),
                                         icon: Icon(Icons.arrow_drop_down,
                                             color: Colors.black),
                                         iconSize: 25,
-                                        items:
-                                            items2.map(buildMenuItem).toList(),
-                                        hint: Text('Select Location'),
+                                        items: eventController.location
+                                            .map(eventController.buildMenuItem)
+                                            .toList(),
+                                        hint: Text(
+                                          'Select Location',
+                                          style: TextStyle(color: Colors.black),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                  VerticalDivider(),
+                                  VerticalDivider(
+                                    color: Colors.black,
+                                  ),
                                   Container(
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton<String>(
-                                        onChanged: (value) => setState(() {
-                                          this.value = value;
-                                        }),
-                                        value: value,
-                                        icon: Icon(Icons.arrow_drop_down,
-                                            color: Colors.black),
-                                        iconSize: 25,
-                                        items:
-                                            items3.map(buildMenuItem).toList(),
-                                        hint: Text('Select Date'),
-                                      ),
+                                    child: Row(
+                                      children: [
+                                        TextButton(
+                                            onPressed: () => pickDate(context),
+                                            child: Text(
+                                              eventController.getText(),
+                                              style: TextStyle(
+                                                  color: Colors.black),
+                                            )),
+                                        Icon(
+                                          Icons.arrow_drop_down,
+                                          color: Colors.black,
+                                          size: 25,
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ]
@@ -372,8 +376,18 @@ class _DeskEventPageState extends State<DeskEventPage> {
     );
   }
 
-  DropdownMenuItem<String> buildMenuItem(String item) =>
-      DropdownMenuItem(value: item, child: Text(item));
+  Future pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
+        context: context,
+        initialDate: eventController.date ?? initialDate,
+        firstDate: DateTime(DateTime.now().year - 5),
+        lastDate: DateTime(DateTime.now().year + 5));
+    if (newDate == null) return;
+    setState(() {
+      eventController.date = newDate;
+    });
+  }
 
   void onEntered1(bool isHovered) => setState(() {
         this.isHovered1 = isHovered;
