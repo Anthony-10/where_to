@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +21,14 @@ class _DeskEventPageState extends State<DeskEventPage> {
   bool isHovered3 = false;
 
   final texts = ['Home', 'Events', 'ContactUs'];
+
+  final images = [
+    'assets/party.jpg',
+    'assets/event.jpg',
+    'assets/event1.jpg',
+    'assets/event2.jpg',
+    'assets/event3.jpg'
+  ];
 
   String? value1;
   String? value2;
@@ -51,13 +61,33 @@ class _DeskEventPageState extends State<DeskEventPage> {
                   children: [
                     Container(
                       height: height * 0.6,
-                      decoration: BoxDecoration(
+                      color: Colors.black,
+                      /*decoration: BoxDecoration(
                           image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage(
                           'assets/party.jpg',
                         ),
-                      )),
+                      )),*/
+                      child: CarouselSlider.builder(
+                        options: CarouselOptions(
+                            viewportFraction: 1,
+                            height: height * 0.6,
+                            enlargeCenterPage: true,
+                            autoPlay: true,
+                            autoPlayAnimationDuration: Duration(seconds: 2),
+                            aspectRatio: 18 / 8),
+                        itemCount: images.length,
+                        itemBuilder: (context, index, realIndex) {
+                          final image = images[index];
+                          return Image.asset(
+                            image,
+                            fit: BoxFit.cover,
+                            height: height * 0.6,
+                            width: width,
+                          );
+                        },
+                      ),
                     ),
                     Positioned(
                       child: Padding(
@@ -215,7 +245,7 @@ class _DeskEventPageState extends State<DeskEventPage> {
                 Container(
                   height: height * 0.7,
                   width: width,
-                  color: Colors.blue,
+                  color: Colors.white,
                   child: Padding(
                     padding:
                         const EdgeInsets.only(top: 150, left: 40, right: 40),
@@ -228,32 +258,49 @@ class _DeskEventPageState extends State<DeskEventPage> {
                               mainAxisSpacing: 20),
                       itemCount: 20,
                       itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: 800,
-                          height: 400,
-                          child: Column(
-                            children: [
-                              Container(
-                                color: Colors.black,
-                                height: 300,
-                                width: 400,
-                                child: Image.asset(
-                                  'assets/event1.jpg',
-                                  fit: BoxFit.fill,
-                                ),
+                        return Column(
+                          children: [
+                            Container(
+                              color: Colors.black,
+                              height: 300,
+                              width: 400,
+                              child: Image.asset(
+                                'assets/event1.jpg',
+                                fit: BoxFit.fill,
                               ),
-                              Container(
-                                color: Colors.white,
-                                height: 100,
-                                width: 400,
-                              )
-                            ],
-                          ),
+                            ),
+                            Container(
+                              color: Colors.white,
+                              height: 100,
+                              width: 400,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text('Nairobi Video Speech'),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(children: [
+                                    Icon(Icons.person),
+                                    Text('14.7k followers')
+                                  ])
+                                ],
+                              ),
+                            )
+                          ],
                         );
                       },
                     ),
                   ),
                 ),
+                Container(
+                  height: height * 0.7,
+                  width: width,
+                  color: Colors.black,
+                )
               ],
             ),
             Positioned(
