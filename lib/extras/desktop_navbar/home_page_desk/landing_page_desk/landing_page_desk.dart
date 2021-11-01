@@ -1,7 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../desk_event_page.dart';
+import '../../../../desk_event/desk_event_page.dart';
 
 class LandingPageDesk extends StatelessWidget {
   @override

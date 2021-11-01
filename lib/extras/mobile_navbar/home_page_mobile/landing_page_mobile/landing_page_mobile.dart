@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../desk_event_page.dart';
+import '../../../../desk_event/desk_event_page.dart';
 
 class LandingPageMobile extends StatelessWidget {
   @override

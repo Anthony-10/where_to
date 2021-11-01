@@ -2,11 +2,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:sprung/sprung.dart';
+import 'package:where_to/desk_event/event_page.dart';
 
-import 'controller.dart';
+import 'contact_us_page.dart';
+import '../controller.dart';
 
 class DeskEventPage extends StatefulWidget {
   const DeskEventPage({Key? key}) : super(key: key);
@@ -21,18 +24,6 @@ class _DeskEventPageState extends State<DeskEventPage> {
   bool isHovered3 = false;
 
   final texts = ['Home', 'Events', 'ContactUs'];
-
-  final images = [
-    'assets/party.jpg',
-    'assets/event.jpg',
-    'assets/event1.jpg',
-    'assets/event2.jpg',
-    'assets/event3.jpg'
-  ];
-
-  String? value1;
-  String? value2;
-  String? value3;
 
   final eventController = Get.put(EventController());
   @override
@@ -77,9 +68,9 @@ class _DeskEventPageState extends State<DeskEventPage> {
                             autoPlay: true,
                             autoPlayAnimationDuration: Duration(seconds: 2),
                             aspectRatio: 18 / 8),
-                        itemCount: images.length,
+                        itemCount: eventController.images.length,
                         itemBuilder: (context, index, realIndex) {
-                          final image = images[index];
+                          final image = eventController.images[index];
                           return Image.asset(
                             image,
                             fit: BoxFit.cover,
@@ -242,65 +233,8 @@ class _DeskEventPageState extends State<DeskEventPage> {
                     ),
                   ],
                 ),
-                Container(
-                  height: height * 0.7,
-                  width: width,
-                  color: Colors.white,
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(top: 150, left: 40, right: 40),
-                    child: GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                              maxCrossAxisExtent: 300,
-                              childAspectRatio: 8 / 12,
-                              crossAxisSpacing: 20,
-                              mainAxisSpacing: 20),
-                      itemCount: 20,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          children: [
-                            Container(
-                              color: Colors.black,
-                              height: 300,
-                              width: 400,
-                              child: Image.asset(
-                                'assets/event1.jpg',
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            Container(
-                              color: Colors.white,
-                              height: 100,
-                              width: 400,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Text('Nairobi Video Speech'),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  Row(children: [
-                                    Icon(Icons.person),
-                                    Text('14.7k followers')
-                                  ])
-                                ],
-                              ),
-                            )
-                          ],
-                        );
-                      },
-                    ),
-                  ),
-                ),
-                Container(
-                  height: height * 0.7,
-                  width: width,
-                  color: Colors.black,
-                )
+                EventsPage(height: height, width: width),
+                ContactUsPage(height: height, width: width)
               ],
             ),
             Positioned(
@@ -341,11 +275,11 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                             .map(eventController.buildMenuItem)
                                             .toList(),
                                         borderRadius: BorderRadius.circular(12),
-                                        value: value1,
+                                        value: eventController.value1,
                                         onChanged: (value) => setState(() {
-                                          print(this.value1);
-                                          this.value1 = value;
-                                          print(this.value1);
+                                          print(this.eventController.value1);
+                                          this.eventController.value1 = value;
+                                          print(this.eventController.value1);
                                         }),
                                         icon: Icon(Icons.arrow_drop_down,
                                             color: Colors.black),
@@ -362,9 +296,9 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                   Container(
                                     child: DropdownButtonHideUnderline(
                                       child: DropdownButton<String>(
-                                        value: value2,
+                                        value: eventController.value2,
                                         onChanged: (value) => setState(() {
-                                          this.value2 = value;
+                                          this.eventController.value2 = value;
                                         }),
                                         icon: Icon(Icons.arrow_drop_down,
                                             color: Colors.black),

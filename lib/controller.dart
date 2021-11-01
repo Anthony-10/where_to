@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EventController extends GetxController {
+  final images = [
+    'assets/party.jpg',
+    'assets/event.jpg',
+    'assets/event1.jpg',
+    'assets/event2.jpg',
+    'assets/event3.jpg'
+  ];
+
   final events = [
     'Conferences',
     'WorkShops',
@@ -41,6 +49,10 @@ class EventController extends GetxController {
     'Nairobi',
   ];
   DateTime? date;
+
+  String? value1;
+  String? value2;
+  String? value3;
 
   String getText() {
     if (date == null) {
