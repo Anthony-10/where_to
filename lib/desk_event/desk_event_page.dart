@@ -6,10 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:sprung/sprung.dart';
-import 'package:where_to/desk_event/event_page.dart';
 
-import 'contact_us_page.dart';
 import '../controller.dart';
+import 'contact_us_page_desk.dart';
+import 'event_page_desk.dart';
 
 class DeskEventPage extends StatefulWidget {
   const DeskEventPage({Key? key}) : super(key: key);
@@ -233,8 +233,8 @@ class _DeskEventPageState extends State<DeskEventPage> {
                     ),
                   ],
                 ),
-                EventsPage(height: height, width: width),
-                ContactUsPage(height: height, width: width)
+                EventsPageDesk(height: height, width: width),
+                ContactUsPageDesk(height: height, width: width)
               ],
             ),
             Positioned(

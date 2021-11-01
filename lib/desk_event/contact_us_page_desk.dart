@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ContactUsPage extends StatelessWidget {
-  const ContactUsPage({
+class ContactUsPageDesk extends StatelessWidget {
+  const ContactUsPageDesk({
     Key? key,
     required this.height,
     required this.width,

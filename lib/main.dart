@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'desk_event/desk_event_page.dart';
-import 'moble_event_page.dart';
+import 'mobile_event/moble_event_page.dart';
 
 void main() {
   runApp(MyApp());

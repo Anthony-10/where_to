@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class EventsPage extends StatelessWidget {
-  const EventsPage({
+class EventPageMob extends StatelessWidget {
+  const EventPageMob({
     Key? key,
     required this.height,
     required this.width,
@@ -21,7 +21,7 @@ class EventsPage extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
               maxCrossAxisExtent: 300,
-              childAspectRatio: 3 / 10,
+              childAspectRatio: 6 / 12,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20),
           itemCount: 20,
@@ -30,17 +30,17 @@ class EventsPage extends StatelessWidget {
               children: [
                 Container(
                   color: Colors.black,
-                  height: height * .3,
-                  width: width * .4,
+                  height: 200,
+                  width: 400,
                   child: Image.asset(
                     'assets/event1.jpg',
                     fit: BoxFit.fill,
                   ),
                 ),
                 Container(
-                  color: Colors.blue,
-                  height: height * .3,
-                  width: width * .4,
+                  color: Colors.white,
+                  height: 160,
+                  width: 400,
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, top: 10),
                     child: Column(
@@ -79,9 +79,9 @@ class EventsPage extends StatelessWidget {
                             ),
                             onPressed: () {
                               /* Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => print(this.value1);),
-                              );*/
+                    context,
+                    MaterialPageRoute(builder: (context) => print(this.value1);),
+                  );*/
                             }),
                       ],
                     ),
