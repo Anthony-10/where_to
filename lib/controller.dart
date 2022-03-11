@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,6 +50,9 @@ class EventController extends GetxController {
     'Kisi',
     'Nairobi',
   ];
+  var height = Get.height;
+  var width = Get.width;
+
   DateTime? date;
 
   String? value1;

@@ -28,8 +28,6 @@ class _DeskEventPageState extends State<DeskEventPage> {
   final eventController = Get.put(EventController());
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
     final hoveredTransform = Matrix4.identity()
       ..translate(8, 0, 0)
       ..scale(1.1);
@@ -51,7 +49,7 @@ class _DeskEventPageState extends State<DeskEventPage> {
                 Stack(
                   children: [
                     Container(
-                      height: height * 0.6,
+                      height: eventController.height * 0.6,
                       color: Colors.black,
                       /*decoration: BoxDecoration(
                           image: DecorationImage(
@@ -60,24 +58,43 @@ class _DeskEventPageState extends State<DeskEventPage> {
                           'assets/party.jpg',
                         ),
                       )),*/
-                      child: CarouselSlider.builder(
-                        options: CarouselOptions(
-                            viewportFraction: 1,
-                            height: height * 0.6,
-                            enlargeCenterPage: true,
-                            autoPlay: true,
-                            autoPlayAnimationDuration: Duration(seconds: 2),
-                            aspectRatio: 18 / 8),
-                        itemCount: eventController.images.length,
-                        itemBuilder: (context, index, realIndex) {
-                          final image = eventController.images[index];
-                          return Image.asset(
-                            image,
-                            fit: BoxFit.cover,
-                            height: height * 0.6,
-                            width: width,
-                          );
-                        },
+                      child: Stack(
+                        children: [
+                          CarouselSlider.builder(
+                            options: CarouselOptions(
+                                viewportFraction: 1,
+                                height: eventController.height * 0.6,
+                                enlargeCenterPage: true,
+                                autoPlay: true,
+                                autoPlayAnimationDuration: Duration(seconds: 2),
+                                aspectRatio: 18 / 8),
+                            itemCount: eventController.images.length,
+                            itemBuilder: (context, index, realIndex) {
+                              final image = eventController.images[index];
+                              return Image.asset(
+                                image,
+                                fit: BoxFit.fill,
+                                height: eventController.height * 0.6,
+                                width: eventController.width,
+                              );
+                            },
+                          ),
+                          Positioned(
+                            top: eventController.height * .53,
+                            left: eventController.width * .1,
+                            right: eventController.width * .1,
+                            child: Container(
+                              height: eventController.height * 0.07,
+                              width: eventController.width * 0.95,
+                              color: Colors.white,
+                              child: Text(
+                                'Live your best life',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 30),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Positioned(
@@ -233,22 +250,17 @@ class _DeskEventPageState extends State<DeskEventPage> {
                     ),
                   ],
                 ),
-                EventsPageDesk(height: height, width: width),
-                ContactUsPageDesk(height: height, width: width)
+                EventsPageDesk(
+                    height: eventController.height,
+                    width: eventController.width),
+                ContactUsPageDesk(
+                    height: eventController.height,
+                    width: eventController.width)
               ],
             ),
-            Positioned(
-                top: height * .7 - (width * .1),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 60),
-                  child: Container(
-                    height: height * 0.2,
-                    width: width * 0.9,
-                    child: Column(
-                      children: [
-                        Container(
-                            height: height * 0.1,
-                            width: width * 0.9,
+            /*Container(
+                            height: eventController.height * 0.1,
+                            width: eventController.width * 0.9,
                             color: Colors.white,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 10, left: 10),
@@ -257,10 +269,10 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 30),
                               ),
-                            )),
+                            )),*/ /*
                         Container(
-                          height: height * 0.1,
-                          width: width * 0.9,
+                          height: eventController.height * 0.1,
+                          width: eventController.width * 0.9,
                           color: Colors.red,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -335,7 +347,7 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                     ),
                                   ),
                                 ]
-                                /*Text('wew'),
+                                */ /*Text('wew'),
                                 VerticalDivider(
                                   color: Colors.black,
                                 ),
@@ -343,14 +355,14 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                 VerticalDivider(
                                   color: Colors.black,
                                 ),
-                                Text('wew'),*/
+                                Text('wew'),*/ /*
                                 ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                )),
+                )),*/
           ],
         ),
       ),

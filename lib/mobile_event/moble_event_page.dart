@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sprung/sprung.dart';
+import 'package:where_to/auth_view/auth_view.dart';
+import 'package:where_to/mobile_event/register_mob.dart';
 
 import '../controller.dart';
 import 'contact_page_mob.dart';
@@ -26,19 +28,6 @@ class _MobileEventPageState extends State<MobileEventPage> {
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
-    final hoveredTransform = Matrix4.identity()
-      ..translate(8, 0, 0)
-      ..scale(1.1);
-    final transform1 = isHovered1 ? hoveredTransform : Matrix4.identity();
-    final transform2 = isHovered2 ? hoveredTransform : Matrix4.identity();
-    final transform3 = isHovered3 ? hoveredTransform : Matrix4.identity();
-
-    final color1 = isHovered1 ? Colors.red : Colors.white;
-    final color2 = isHovered2 ? Colors.red : Colors.white;
-    final color3 = isHovered3 ? Colors.red : Colors.white;
-
     return Scaffold(
       endDrawer: drawer(),
       key: scaffoldKey,
@@ -49,26 +38,30 @@ class _MobileEventPageState extends State<MobileEventPage> {
             Column(
               children: [
                 HomePageMob(
-                    height: height,
+                    height: eventController.height,
                     eventController: eventController,
-                    width: width,
+                    width: eventController.width,
                     scaffoldKey: scaffoldKey),
-                EventPageMob(height: height, width: width),
-                ContactPageMob(height: height, width: width)
+                EventPageMob(
+                    height: eventController.height,
+                    width: eventController.width),
+                ContactPageMob(
+                    height: eventController.height,
+                    width: eventController.width)
               ],
             ),
             Positioned(
-                top: height * .6 - (width * .1),
+                top: eventController.height * .6 - (eventController.width * .1),
                 child: Padding(
                   padding: EdgeInsets.only(left: 30),
                   child: Container(
-                    height: height * 0.2,
-                    width: width * 0.9,
+                    height: eventController.height * 0.2,
+                    width: eventController.width * 0.9,
                     child: Column(
                       children: [
                         Container(
-                            height: height * 0.1,
-                            width: width * 0.9,
+                            height: eventController.height * 0.1,
+                            width: eventController.width * 0.9,
                             color: Colors.white,
                             child: Padding(
                               padding: const EdgeInsets.only(top: 10, left: 10),
@@ -79,8 +72,8 @@ class _MobileEventPageState extends State<MobileEventPage> {
                               ),
                             )),
                         Container(
-                          height: height * 0.1,
-                          width: width * 0.9,
+                          height: eventController.height * 0.1,
+                          width: eventController.width * 0.9,
                           color: Colors.red,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 10, right: 10),
@@ -154,17 +147,7 @@ class _MobileEventPageState extends State<MobileEventPage> {
                                       ],
                                     ),
                                   ),
-                                ]
-                                /*Text('wew'),
-                                VerticalDivider(
-                                  color: Colors.black,
-                                ),
-                                Text('wew'),
-                                VerticalDivider(
-                                  color: Colors.black,
-                                ),
-                                Text('wew'),*/
-                                ),
+                                ]),
                           ),
                         ),
                       ],
@@ -179,85 +162,90 @@ class _MobileEventPageState extends State<MobileEventPage> {
 
   Widget drawer() {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Align(
-              alignment: Alignment.topLeft,
-              child:
-                  IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back))),
-          // header
-          UserAccountsDrawerHeader(
-            accountName: const Text('anthony'),
-            accountEmail: const Text('anthony@gmail.com'),
-            currentAccountPicture: GestureDetector(
-              child: const CircleAvatar(
-                backgroundColor: Colors.grey,
-                child: Icon(
-                  Icons.person,
-                  color: Colors.white,
+      child: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color.fromRGBO(44, 9, 111, 1.0),
+              Color.fromRGBO(69, 9, 108, 1.0)
+            ])),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            // body
+            SizedBox(
+              height: 100,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  Get.to(HomePageMob(
+                      height: eventController.height,
+                      eventController: eventController,
+                      width: eventController.width,
+                      scaffoldKey: scaffoldKey));
+                },
+                child: Text(
+                  'Home',
+                  style: TextStyle(color: Colors.white),
                 ),
               ),
             ),
-            //     decoration: BoxDecoration(color: Colors.white),
-          ),
-
-          // body
-          InkWell(
-            child: ListTile(
-              onTap: () {},
-              title: const Text('Register'),
-              leading: const Icon(
-                Icons.favorite,
-                color: Colors.blue,
+            SizedBox(
+              height: 35,
+            ),
+            Center(
+              child: InkWell(
+                onTap: () {
+                  Get.to(EventPageMob(
+                      height: eventController.height,
+                      width: eventController.width));
+                },
+                child: Text('Event', style: TextStyle(color: Colors.white)),
               ),
             ),
-          ),
+            SizedBox(
+              height: 35,
+            ),
 
-          InkWell(
-            child: ListTile(
-              onTap: () {},
-              title: const Text('Login'),
-              leading: const Icon(
-                Icons.shop,
-                color: Colors.blue,
+            Center(
+              child: InkWell(
+                onTap: () {
+                  Get.to(ContactPageMob(
+                      height: eventController.height,
+                      width: eventController.width));
+                },
+                child:
+                    Text('Contact Us', style: TextStyle(color: Colors.white)),
               ),
             ),
-          ),
+            SizedBox(
+              height: 35,
+            ),
 
-          InkWell(
-            child: ListTile(
-              onTap: () {},
-              title: const Text('Home'),
-              leading: const Icon(
-                Icons.home,
-                color: Colors.blue,
+            Center(
+              child: Container(
+                width: 100,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.blue),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                child: InkWell(
+                  onTap: () {
+                    Get.to(AuthViewMob());
+                  },
+                  child: Center(
+                      child: Text('Register',
+                          style: TextStyle(color: Colors.white))),
+                ),
               ),
             ),
-          ),
-
-          InkWell(
-            child: ListTile(
-              onTap: () {},
-              title: const Text('About'),
-              leading: const Icon(
-                Icons.settings,
-                color: Colors.blue,
-              ),
+            SizedBox(
+              height: 30,
             ),
-          ),
-
-          InkWell(
-            child: ListTile(
-              onTap: () {},
-              title: const Text('Contact Us'),
-              leading: const Icon(
-                Icons.phone,
-                color: Colors.blue,
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
