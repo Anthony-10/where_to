@@ -1,23 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controller.dart';
 
-class ContactPageMob extends StatefulWidget {
-  const ContactPageMob({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double width;
+class TabletContactPage extends StatefulWidget {
+  const TabletContactPage({Key? key}) : super(key: key);
 
   @override
-  State<ContactPageMob> createState() => _ContactPageMobState();
+  _TabletContactPageState createState() => _TabletContactPageState();
 }
 
-class _ContactPageMobState extends State<ContactPageMob> {
+class _TabletContactPageState extends State<TabletContactPage> {
   final eventController = Get.put(EventController());
 
   final TextEditingController _Email = TextEditingController();
@@ -26,11 +20,13 @@ class _ContactPageMobState extends State<ContactPageMob> {
 
   final TextEditingController _Name = TextEditingController();
 
+  var height = Get.height;
+  var width = Get.width;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height * 1.9,
-      width: widget.width,
+      height: height * 0.8,
+      width: width,
       decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
@@ -39,16 +35,52 @@ class _ContactPageMobState extends State<ContactPageMob> {
             Color.fromRGBO(30, 11, 69, 1.0),
             Color.fromRGBO(40, 9, 57, 1.0)
           ])),
-      child: Column(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            height: widget.height * 0.9,
-            width: widget.width * 0.8,
+            height: height * 0.7,
+            width: width * 0.4,
+            color: Colors.blue[100],
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, top: 20),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Contact Us',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold)),
+                    SizedBox(
+                      height: 90,
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.email_outlined),
+                      title: Text('info@getintouch.we'),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.phone_outlined),
+                      title: Text('+254 722345476'),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.watch_later_outlined),
+                      title: Text('9am - 10pm'),
+                    ),
+                  ]),
+            ),
+          ),
+          Container(
+            height: height * 0.7,
+            width: width * 0.5,
             color: Colors.grey[200],
             child: Padding(
               padding: EdgeInsets.only(
-                  left: widget.width * 0.05, top: widget.height * 0.08),
+                  left: width * 0.04, top: height * 0.06, right: width * 0.04),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -105,43 +137,6 @@ class _ContactPageMobState extends State<ContactPageMob> {
                   ]),
             ),
           ),
-          Container(
-            height: widget.height * 0.6,
-            width: widget.width * 0.8,
-            color: Colors.blue[100],
-            child: Padding(
-              padding: EdgeInsets.only(
-                  left: widget.width * 0.05, top: widget.height * 0.03),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Contact Us',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.email_outlined),
-                      title: Text('info@getintouch.we'),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.phone_outlined),
-                      title: Text('+254 722345476'),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    ListTile(
-                      leading: Icon(Icons.watch_later_outlined),
-                      title: Text('9am - 10pm'),
-                    ),
-                  ]),
-            ),
-          )
         ],
       ),
     );

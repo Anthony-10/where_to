@@ -3,28 +3,22 @@ import 'package:get/get.dart';
 
 import '../controller.dart';
 
-class EventsPageDesk extends StatefulWidget {
-  const EventsPageDesk({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  final double height;
-  final double width;
+class TabletEventPage extends StatefulWidget {
+  const TabletEventPage({Key? key}) : super(key: key);
 
   @override
-  State<EventsPageDesk> createState() => _EventsPageDeskState();
+  _TabletEventPageState createState() => _TabletEventPageState();
 }
 
-class _EventsPageDeskState extends State<EventsPageDesk> {
+class _TabletEventPageState extends State<TabletEventPage> {
   final eventController = Get.put(EventController());
-
+  var height = Get.height;
+  var width = Get.width;
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height,
-      width: widget.width,
+      height: height,
+      width: width,
       color: Colors.white,
       child: Column(
         children: [
@@ -34,7 +28,7 @@ class _EventsPageDeskState extends State<EventsPageDesk> {
                 right: eventController.width * .1),
             child: Container(
               height: eventController.height * 0.1,
-              width: eventController.width * 0.9,
+              width: eventController.width * 0.95,
               color: Colors.red,
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -119,21 +113,19 @@ class _EventsPageDeskState extends State<EventsPageDesk> {
           Padding(
             padding: EdgeInsets.only(
                 top: eventController.height * 0.05,
-                left: eventController.width * 0.08,
-                right: eventController.width * 0.08,
+                left: eventController.width * 0.1,
+                right: eventController.width * 0.1,
                 bottom: eventController.height * 0.05),
             child: Container(
               height: eventController.height * 0.8,
               width: eventController.width * 0.9,
               color: Colors.grey[200],
               child: GridView.builder(
-                shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 400,
                     mainAxisExtent: 330,
-
                     //childAspectRatio: 5 / 9,
-                    crossAxisSpacing: 20.0,
+                    crossAxisSpacing: 30.0,
                     mainAxisSpacing: 30.0),
                 itemCount: 20,
                 itemBuilder: (BuildContext context, int index) {
@@ -141,8 +133,8 @@ class _EventsPageDeskState extends State<EventsPageDesk> {
                     children: [
                       Container(
                         color: Colors.black,
-                        height: widget.height * .3,
-                        width: widget.width * .4,
+                        height: height * .3,
+                        width: width * .4,
                         child: Image.asset(
                           'assets/event1.jpg',
                           fit: BoxFit.fill,
@@ -151,11 +143,10 @@ class _EventsPageDeskState extends State<EventsPageDesk> {
                       Expanded(
                         child: Container(
                           color: Colors.grey[350],
-                          height: widget.height * .2,
-                          width: widget.width * .4,
+                          height: height * .2,
+                          width: width * .4,
                           child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 10, right: 10),
+                            padding: const EdgeInsets.only(left: 10, top: 10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -171,13 +162,31 @@ class _EventsPageDeskState extends State<EventsPageDesk> {
                                   height: 10,
                                 ),
                                 Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       IconButton(
                                           icon: Icon(Icons.person_outline),
                                           onPressed: () {}),
                                       Text('14.7k followers'),
                                     ]),
+                                /*SizedBox(
+                                  height: 10,
+                                ),
+                                MaterialButton(
+                                    color: Colors.pink,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0))),
+                                    child: Text(
+                                      'Tickets',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    onPressed: () {
+                                      */ /* Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => print(this.value1);),
+                                      );*/ /*
+                                    }),*/
                               ],
                             ),
                           ),

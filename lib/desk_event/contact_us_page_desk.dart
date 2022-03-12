@@ -121,7 +121,28 @@ class _ContactUsPageDeskState extends State<ContactUsPageDesk> {
                     children: [
                       Text('Contact Us',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold))
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        height: 90,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.email_outlined),
+                        title: Text('info@getintouch.we'),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.phone_outlined),
+                        title: Text('+254 722345476'),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      ListTile(
+                        leading: Icon(Icons.watch_later_outlined),
+                        title: Text('9am - 10pm'),
+                      ),
                     ]),
               ),
             ))

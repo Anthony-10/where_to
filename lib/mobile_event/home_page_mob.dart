@@ -39,7 +39,7 @@ class HomePageMob extends StatelessWidget {
               final image = eventController.images[index];
               return Image.asset(
                 image,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 height: height * 0.6,
                 width: width,
               );
@@ -54,114 +54,120 @@ class HomePageMob extends StatelessWidget {
           )),*/
         ),
         Positioned(
+          top: eventController.height * .53,
+          left: eventController.width * .1,
+          right: eventController.width * .1,
+          child: Container(
+            height: eventController.height * 0.07,
+            width: eventController.width * 0.95,
+            color: Colors.white,
+            child: Text(
+              'Live your best life',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+            ),
+          ),
+        ),
+        Positioned(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-              child: Container(
-                height: height * .4,
-                color: Colors.white.withOpacity(0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RichText(
-                      text: TextSpan(
-                          text: 'Where ',
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RichText(
+                  text: TextSpan(
+                      text: 'Where ',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 30),
+                      children: [
+                        TextSpan(
+                          text: 'To mob',
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                               fontSize: 30),
-                          children: [
-                            TextSpan(
-                              text: 'To',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                  fontSize: 30),
-                            ),
-                          ]),
-                    ),
-                    IconButton(
-                        iconSize: width * .08,
-                        onPressed: () =>
-                            scaffoldKey.currentState!.openEndDrawer(),
-                        icon: Icon(
-                          Icons.menu_rounded,
-                          color: Colors.white,
-                        ))
-                    /*IntrinsicHeight(
-                      child: Row(
-                        children: [
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            onEnter: (event) => onEntered1(true),
-                            onExit: (event) => onEntered1(false),
-                            child: AnimatedContainer(
-                              curve: Sprung.overDamped,
-                              duration: Duration(milliseconds: 200),
-                              transform: transform1,
-                              child: Text(
-                                'Home',
-                                style: TextStyle(color: color1),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            onEnter: (event) => onEntered2(true),
-                            onExit: (event) => onEntered2(false),
-                            child: AnimatedContainer(
-                              curve: Sprung.overDamped,
-                              duration: Duration(milliseconds: 200),
-                              transform: transform2,
-                              child: Text(
-                                'Events',
-                                style: TextStyle(color: color2),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 30,
-                          ),
-                          MouseRegion(
-                            cursor: SystemMouseCursors.click,
-                            onEnter: (event) => onEntered3(true),
-                            onExit: (event) => onEntered3(false),
-                            child: AnimatedContainer(
-                              curve: Sprung.overDamped,
-                              duration: Duration(milliseconds: 200),
-                              transform: transform3,
-                              child: Text(
-                                'Contact Us',
-                                style: TextStyle(color: color3),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 50,
-                          ),
-                          Text(
-                            'Register',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          VerticalDivider(
-                            color: Colors.white,
-                            thickness: 1,
-                            width: 20,
-                          ),
-                          Text(
-                            'Login',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
-                      ),
-                    )*/
-                  ],
+                        ),
+                      ]),
                 ),
-              ),
+                IconButton(
+                    iconSize: width * .08,
+                    onPressed: () => scaffoldKey.currentState!.openEndDrawer(),
+                    icon: Icon(
+                      Icons.menu_rounded,
+                      color: Colors.white,
+                    ))
+                /*IntrinsicHeight(
+                  child: Row(
+                    children: [
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        onEnter: (event) => onEntered1(true),
+                        onExit: (event) => onEntered1(false),
+                        child: AnimatedContainer(
+                          curve: Sprung.overDamped,
+                          duration: Duration(milliseconds: 200),
+                          transform: transform1,
+                          child: Text(
+                            'Home',
+                            style: TextStyle(color: color1),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        onEnter: (event) => onEntered2(true),
+                        onExit: (event) => onEntered2(false),
+                        child: AnimatedContainer(
+                          curve: Sprung.overDamped,
+                          duration: Duration(milliseconds: 200),
+                          transform: transform2,
+                          child: Text(
+                            'Events',
+                            style: TextStyle(color: color2),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 30,
+                      ),
+                      MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        onEnter: (event) => onEntered3(true),
+                        onExit: (event) => onEntered3(false),
+                        child: AnimatedContainer(
+                          curve: Sprung.overDamped,
+                          duration: Duration(milliseconds: 200),
+                          transform: transform3,
+                          child: Text(
+                            'Contact Us',
+                            style: TextStyle(color: color3),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Text(
+                        'Register',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      VerticalDivider(
+                        color: Colors.white,
+                        thickness: 1,
+                        width: 20,
+                      ),
+                      Text(
+                        'Login',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ],
+                  ),
+                )*/
+              ],
             ),
           ),
         ),

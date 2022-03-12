@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -50,6 +52,7 @@ class _DeskEventPageState extends State<DeskEventPage> {
                   children: [
                     Container(
                       height: eventController.height * 0.6,
+                      width: eventController.width,
                       color: Colors.black,
                       /*decoration: BoxDecoration(
                           image: DecorationImage(
@@ -105,22 +108,29 @@ class _DeskEventPageState extends State<DeskEventPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              RichText(
-                                text: TextSpan(
-                                    text: 'Where ',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 30),
-                                    children: [
-                                      TextSpan(
-                                        text: 'To',
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: BackdropFilter(
+                                  filter:
+                                      ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                                  child: RichText(
+                                    text: TextSpan(
+                                        text: 'Where ',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.black,
+                                            color: Colors.white,
                                             fontSize: 30),
-                                      ),
-                                    ]),
+                                        children: [
+                                          TextSpan(
+                                            text: 'To desk',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.black,
+                                                fontSize: 30),
+                                          ),
+                                        ]),
+                                  ),
+                                ),
                               ),
                               IntrinsicHeight(
                                 child: Row(
