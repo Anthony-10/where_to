@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 
 import '../controller.dart';
 
-class ContactUsPageDesk extends StatefulWidget {
-  const ContactUsPageDesk({
+class ContactUs extends StatefulWidget {
+  const ContactUs({
     Key? key,
     required this.height,
     required this.width,
@@ -15,10 +15,10 @@ class ContactUsPageDesk extends StatefulWidget {
   final double width;
 
   @override
-  State<ContactUsPageDesk> createState() => _ContactUsPageDeskState();
+  State<ContactUs> createState() => _ContactUsState();
 }
 
-class _ContactUsPageDeskState extends State<ContactUsPageDesk> {
+class _ContactUsState extends State<ContactUs> {
   final eventController = Get.put(EventController());
   final TextEditingController _Email = TextEditingController();
   final TextEditingController _Message = TextEditingController();

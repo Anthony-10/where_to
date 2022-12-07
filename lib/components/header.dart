@@ -1,26 +1,22 @@
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:sprung/sprung.dart';
 
 import '../controller.dart';
-import 'contact_us_page_desk.dart';
-import 'event_page_desk.dart';
+import 'contact_us.dart';
+import 'events_page.dart';
 
-class DeskEventPage extends StatefulWidget {
-  const DeskEventPage({Key? key}) : super(key: key);
+class header extends StatefulWidget {
+  const header({Key? key}) : super(key: key);
 
   @override
-  _DeskEventPageState createState() => _DeskEventPageState();
+  _headerState createState() => _headerState();
 }
 
-class _DeskEventPageState extends State<DeskEventPage> {
+class _headerState extends State<header> {
   bool isHovered1 = false;
   bool isHovered2 = false;
   bool isHovered3 = false;
@@ -260,10 +256,10 @@ class _DeskEventPageState extends State<DeskEventPage> {
                     ),
                   ],
                 ),
-                EventsPageDesk(
+                EventsPage(
                     height: eventController.height,
                     width: eventController.width),
-                ContactUsPageDesk(
+                ContactUs(
                     height: eventController.height,
                     width: eventController.width)
               ],
@@ -279,7 +275,8 @@ class _DeskEventPageState extends State<DeskEventPage> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 30),
                               ),
-                            )),*/ /*
+                            )),*/
+            /*
                         Container(
                           height: eventController.height * 0.1,
                           width: eventController.width * 0.9,

@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../controller.dart';
 
-class EventsPageDesk extends StatefulWidget {
-  const EventsPageDesk({
+class EventsPage extends StatefulWidget {
+  const EventsPage({
     Key? key,
     required this.height,
     required this.width,
@@ -14,10 +14,10 @@ class EventsPageDesk extends StatefulWidget {
   final double width;
 
   @override
-  State<EventsPageDesk> createState() => _EventsPageDeskState();
+  State<EventsPage> createState() => _EventsPageState();
 }
 
-class _EventsPageDeskState extends State<EventsPageDesk> {
+class _EventsPageState extends State<EventsPage> {
   final eventController = Get.put(EventController());
 
   @override
