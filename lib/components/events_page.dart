@@ -6,12 +6,7 @@ import '../controller.dart';
 class EventsPage extends StatefulWidget {
   const EventsPage({
     Key? key,
-    required this.height,
-    required this.width,
   }) : super(key: key);
-
-  final double height;
-  final double width;
 
   @override
   State<EventsPage> createState() => _EventsPageState();
@@ -23,98 +18,91 @@ class _EventsPageState extends State<EventsPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: widget.height,
-      width: widget.width,
-      color: Colors.white,
+      height: 500,
+      width: Get.width,
+      color: Colors.blue,
       child: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.only(
-                left: eventController.width * .1,
-                right: eventController.width * .1),
-            child: Container(
-              height: eventController.height * 0.1,
-              width: eventController.width * 0.9,
-              color: Colors.red,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          items: eventController.events
-                              .map(eventController.buildMenuItem)
-                              .toList(),
-                          borderRadius: BorderRadius.circular(12),
-                          value: eventController.value1,
-                          onChanged: (value) => setState(() {
-                            print(this.eventController.value1);
-                            this.eventController.value1 = value;
-                            print(this.eventController.value1);
-                          }),
-                          icon:
-                              Icon(Icons.arrow_drop_down, color: Colors.black),
-                          iconSize: 25,
-                          hint: Text('Select Event',
-                              style: TextStyle(color: Colors.black)),
-                        ),
+          Container(
+            height: eventController.height * 0.1,
+            width: eventController.width * 0.9,
+            color: Colors.red,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        items: eventController.events
+                            .map(eventController.buildMenuItem)
+                            .toList(),
+                        borderRadius: BorderRadius.circular(12),
+                        value: eventController.value1,
+                        onChanged: (value) => setState(() {
+                          print(this.eventController.value1);
+                          this.eventController.value1 = value;
+                          print(this.eventController.value1);
+                        }),
+                        icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                        iconSize: 25,
+                        hint: Text('Select Event',
+                            style: TextStyle(color: Colors.black)),
                       ),
                     ),
-                    VerticalDivider(
-                      color: Colors.black,
-                    ),
-                    Container(
-                      child: DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          value: eventController.value2,
-                          onChanged: (value) => setState(() {
-                            this.eventController.value2 = value;
-                          }),
-                          icon:
-                              Icon(Icons.arrow_drop_down, color: Colors.black),
-                          iconSize: 25,
-                          items: eventController.location
-                              .map(eventController.buildMenuItem)
-                              .toList(),
-                          hint: Text(
-                            'Select Location',
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ),
-                    VerticalDivider(
-                      color: Colors.black,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          TextButton(
-                              onPressed: () => pickDate(context),
-                              child: Text(
-                                eventController.getText(),
-                                style: TextStyle(color: Colors.black),
-                              )),
-                          Icon(
-                            Icons.arrow_drop_down,
-                            color: Colors.black,
-                            size: 25,
-                          )
-                        ],
-                      ),
-                    ),
-                  ]
-                  /*Text('wew'),
-                          VerticalDivider(
-                            color: Colors.black,
-                          ),
-                          Text('wew'),
-                          VerticalDivider(
-                            color: Colors.black,
-                          ),
-                          Text('wew'),*/
                   ),
-            ),
+                  VerticalDivider(
+                    color: Colors.black,
+                  ),
+                  Container(
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton<String>(
+                        value: eventController.value2,
+                        onChanged: (value) => setState(() {
+                          this.eventController.value2 = value;
+                        }),
+                        icon: Icon(Icons.arrow_drop_down, color: Colors.black),
+                        iconSize: 25,
+                        items: eventController.location
+                            .map(eventController.buildMenuItem)
+                            .toList(),
+                        hint: Text(
+                          'Select Location',
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                  VerticalDivider(
+                    color: Colors.black,
+                  ),
+                  Container(
+                    child: Row(
+                      children: [
+                        TextButton(
+                            onPressed: () => pickDate(context),
+                            child: Text(
+                              eventController.getText(),
+                              style: TextStyle(color: Colors.black),
+                            )),
+                        Icon(
+                          Icons.arrow_drop_down,
+                          color: Colors.black,
+                          size: 25,
+                        )
+                      ],
+                    ),
+                  ),
+                ]
+                /*Text('wew'),
+                        VerticalDivider(
+                          color: Colors.black,
+                        ),
+                        Text('wew'),
+                        VerticalDivider(
+                          color: Colors.black,
+                        ),
+                        Text('wew'),*/
+                ),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -141,8 +129,8 @@ class _EventsPageState extends State<EventsPage> {
                     children: [
                       Container(
                         color: Colors.black,
-                        height: widget.height * .3,
-                        width: widget.width * .4,
+                        height: 200,
+                        width: 200,
                         child: Image.asset(
                           'assets/event1.jpg',
                           fit: BoxFit.fill,
@@ -151,8 +139,8 @@ class _EventsPageState extends State<EventsPage> {
                       Expanded(
                         child: Container(
                           color: Colors.grey[350],
-                          height: widget.height * .2,
-                          width: widget.width * .4,
+                          height: 100,
+                          width: 100,
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 left: 10, top: 10, right: 10),
