@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:where_to/responsive.dart';
 
 import '../controller.dart';
 
-class EventsPage extends StatefulWidget {
-  const EventsPage({
-    Key? key,
-  }) : super(key: key);
+class EventPage2 extends StatefulWidget {
+  const EventPage2({Key? key}) : super(key: key);
 
   @override
-  State<EventsPage> createState() => _EventsPageState();
+  State<EventPage2> createState() => _EventPage2State();
 }
 
-class _EventsPageState extends State<EventsPage> {
+class _EventPage2State extends State<EventPage2> {
   final eventController = Get.put(EventController());
 
   @override
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return Container(
-      height: Get.height,
+      height: 500,
       width: Get.width,
       color: Colors.blue,
       child: Column(
@@ -107,24 +104,28 @@ class _EventsPageState extends State<EventsPage> {
           SizedBox(
             height: 30,
           ),
-          Responsive(
-            mobile: Expanded(
-              child: EventsImage(
-                crossAxiscount: _size.width < 650 ? 02 : 3,
-                aspectRatio: _size.width < 650 ? 1.2 : 1.1,
-              ),
-            ),
-            tablet: Expanded(
-              child: EventsImage(
-                crossAxiscount: _size.width < 650 ? 02 : 3,
-                aspectRatio: _size.width < 650 ? 1.2 : 1.1,
-              ),
-            ),
-            desktop: Expanded(
-              child: EventsImage(
-                crossAxiscount: _size.width < 650 ? 02 : 3,
-                aspectRatio: _size.width < 650 ? 1.2 : 1.1,
-              ),
+          Expanded(
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: _size.width < 650
+                      ? 02
+                      : _size.width < 825
+                          ? 02
+                          : _size.width < 590
+                              ? 01
+                              : 3,
+                  childAspectRatio: _size.width < 650
+                      ? 1.2
+                      : _size.width < 825
+                          ? 1.2
+                          : _size.width < 560
+                              ? 1.2
+                              : 1.1),
+              itemCount: 20,
+              itemBuilder: (BuildContext context, int index) {
+                return Column();
+              },
             ),
           ),
         ],
@@ -143,74 +144,5 @@ class _EventsPageState extends State<EventsPage> {
     setState(() {
       eventController.date = newDate;
     });
-  }
-}
-
-class EventsImage extends StatelessWidget {
-  const EventsImage({
-    Key? key,
-    required this.crossAxiscount,
-    required this.aspectRatio,
-  }) : super(key: key);
-
-  final int crossAxiscount;
-  final double aspectRatio;
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      shrinkWrap: true,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxiscount, childAspectRatio: aspectRatio),
-      itemCount: 20,
-      itemBuilder: (BuildContext context, int index) {
-        return Column(
-          children: [
-            Flexible(
-              flex: 2,
-              child: Container(
-                color: Colors.black,
-                child: ClipRRect(
-                  child: Image.asset(
-                    'assets/image1.png',
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                color: Colors.grey[350],
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nairobi Video Speech',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text('Fri, Nov 12, 8:00PM'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                        IconButton(
-                            icon: Icon(Icons.person_outline), onPressed: () {}),
-                        Text('14.7k followers'),
-                      ]),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        );
-      },
-    );
   }
 }

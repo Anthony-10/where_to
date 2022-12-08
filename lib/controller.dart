@@ -3,11 +3,11 @@ import 'package:get/get.dart';
 
 class EventController extends GetxController {
   final images = [
-    'assets/party.jpg',
-    'assets/event.jpg',
-    'assets/event1.jpg',
-    'assets/event2.jpg',
-    'assets/event3.jpg'
+    'assets/image1.png',
+    'assets/image2.jpg',
+    'assets/image3.jpeg',
+    'assets/image4.jpg',
+    'assets/image5.jpeg'
   ];
 
   final events = [
