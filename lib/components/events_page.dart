@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:where_to/responsive.dart';
 
+import '../constants.dart';
 import '../controller.dart';
 
 class EventsPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _EventsPageState extends State<EventsPage> {
   Widget build(BuildContext context) {
     final Size _size = MediaQuery.of(context).size;
     return Container(
-      height: Get.height,
+      /*height: Get.height,*/
       width: Get.width,
       color: Colors.blue,
       child: Column(
@@ -116,14 +117,14 @@ class _EventsPageState extends State<EventsPage> {
             ),
             tablet: Expanded(
               child: EventsImage(
-                crossAxiscount: _size.width < 650 ? 02 : 3,
-                aspectRatio: _size.width < 650 ? 1.2 : 1.1,
+                crossAxiscount: _size.width < 825 ? 02 : 3,
+                aspectRatio: _size.width < 825 ? 1.2 : 1.1,
               ),
             ),
             desktop: Expanded(
               child: EventsImage(
-                crossAxiscount: _size.width < 650 ? 02 : 3,
-                aspectRatio: _size.width < 650 ? 1.2 : 1.1,
+                crossAxiscount: _size.width < 590 ? 01 : 3,
+                aspectRatio: _size.width < 560 ? 1.2 : 1.1,
               ),
             ),
           ),
@@ -149,8 +150,8 @@ class _EventsPageState extends State<EventsPage> {
 class EventsImage extends StatelessWidget {
   const EventsImage({
     Key? key,
-    required this.crossAxiscount,
-    required this.aspectRatio,
+    this.crossAxiscount = 3,
+    this.aspectRatio = 1.1,
   }) : super(key: key);
 
   final int crossAxiscount;
@@ -160,57 +161,114 @@ class EventsImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
+      physics: const ScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxiscount,
+        childAspectRatio: aspectRatio,
+      ),
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.all(kPadding / 2),
+        child: InkWell(
+          onTap: () {},
+          child: Material(
+            elevation: 5,
+            borderRadius: BorderRadius.circular(15),
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              child: Column(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      'assets/image1.png',
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "wwwwwwwwwwwwww",
+                    maxLines: 2,
+                    style: TextStyle(
+                      fontSize: 15,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      /*Padding(
+        padding: const EdgeInsets.all(kPadding / 2),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Image.asset(
+            'assets/image1.png',
+            fit: BoxFit.cover,
+          ),
+        ),
+      )*/
+      itemCount: 12,
+    );
+    /*GridView.builder(
+      shrinkWrap: true,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: crossAxiscount, childAspectRatio: aspectRatio),
       itemCount: 20,
       itemBuilder: (BuildContext context, int index) {
         return Column(
           children: [
-            Flexible(
-              flex: 2,
-              child: Container(
-                color: Colors.black,
-                child: ClipRRect(
-                  child: Image.asset(
-                    'assets/image1.png',
-                    fit: BoxFit.fill,
-                  ),
+            Container(
+              width: 250,
+              height: 200,
+              color: Colors.black,
+              child: ClipRRect(
+                child: Image.asset(
+                  'assets/image1.png',
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
-            Flexible(
-              flex: 1,
-              child: Container(
-                color: Colors.grey[350],
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nairobi Video Speech',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text('Fri, Nov 12, 8:00PM'),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                        IconButton(
-                            icon: Icon(Icons.person_outline), onPressed: () {}),
-                        Text('14.7k followers'),
-                      ]),
-                    ],
-                  ),
+            Container(
+              width: 250,
+              height: 150,
+              color: Colors.grey[350],
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Nairobi Video Speech',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('Fri, Nov 12, 8:00PM'),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                      IconButton(
+                          icon: Icon(Icons.person_outline), onPressed: () {}),
+                      Text('14.7k followers'),
+                    ]),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Center(
+                        child: ElevatedButton(
+                            onPressed: () {}, child: Text('Ticket')))
+                  ],
                 ),
               ),
             )
           ],
         );
       },
-    );
+    );*/
   }
 }
